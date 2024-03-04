@@ -10,7 +10,7 @@ function CreatePalette(props) {
 
   useEffect(() => {
     setPalette(urlPalette.split('-'))
-  }, [setPalette, urlPalette])
+  }, [urlPalette])
 
   return (
     <section className='createPalette'>
