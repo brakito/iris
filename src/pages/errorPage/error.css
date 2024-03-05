@@ -1,0 +1,17 @@
+div.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 3rem;
+}
