@@ -12,9 +12,9 @@ export function usePalette() {
     newConfig.paletteLength = palette.length > 0 ? palette.length : 5 
     setConfig(newConfig)
 
-    pushLocation(`/palette/${palette.join('-')}`, { replace: true })
+    pushLocation(`/${palette.join('-')}`, { replace: true })
 
-  }, [pushLocation, palette, setConfig, config])
+  }, [location, palette, config])
 
   return { palette, setPalette, config, setConfig }
 }

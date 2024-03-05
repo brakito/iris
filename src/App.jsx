@@ -1,6 +1,6 @@
 import './App.css'
 import { PaletteContextProvider } from './context/paletteContext'
-import { Redirect, Route } from 'wouter'
+import { Redirect, Route, Switch } from 'wouter'
 import CreatePalette from './pages/createPalette/index'
 import StartPage from './pages/startPage'
 import SideMenu from './components/sideMenu/menu'
@@ -10,21 +10,20 @@ function App() {
   return (
     <PaletteContextProvider>
       <div className='App'>
-      <SideMenu />
-        <Route
-          component={StartPage}
-          path='/palette'
-        />
-        <Route
-          component={CreatePalette}
-          path='/palette/:urlPalette'
-        />
-        <Route path='/create-palette'>
-          <Redirect to='/palette' />
-        </Route>
-        <Route path='/'>
-          <Redirect to='/palette' />
-        </Route>
+        <SideMenu />
+
+        <Switch>
+          <Route
+            component={StartPage}
+            path='/'
+          />
+
+          <Route
+            component={CreatePalette}
+            path='/:urlPalette'
+          />
+        </Switch>
+
       </div>
     </PaletteContextProvider>
   )
