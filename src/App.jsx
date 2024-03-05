@@ -15,7 +15,7 @@ function App() {
 
         <Route
           component={StartPage}
-          path='/'
+          base='/'
         />
 
         <Route
