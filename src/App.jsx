@@ -1,6 +1,6 @@
 import './App.css'
 import { PaletteContextProvider } from './context/paletteContext'
-import { Route } from 'wouter'
+import { Route, Switch } from 'wouter'
 import CreatePalette from './pages/createPalette/index'
 import StartPage from './pages/startPage'
 import SideMenu from './components/sideMenu/menu'
@@ -13,25 +13,12 @@ function App() {
       <div className='App'>
         {/* <SideMenu /> */}
 
-        <Route
-          component={StartPage}
-          base='/'
-        />
-
-        <Route
-          component={StartPage}
-          path='/p'
-        />
-
-        <Route
-          component={CreatePalette}
-          path='/p/:urlPalette'
-        />
-
-        <Route
-          component={ErrorPage}
-          path='/404'
-        />
+        <Switch>
+          <Route component={StartPage} path='/' />
+          <Route component={StartPage} path='/p' />
+          <Route component={CreatePalette} path='/p/:urlPalette' />
+          <Route component={ErrorPage} />
+        </Switch>
 
       </div>
     </PaletteContextProvider>
