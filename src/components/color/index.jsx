@@ -4,7 +4,7 @@ import { isDarkness } from '../../services/VerifyColorIsDarkness'
 import ColorActionsBar from '../colorToolBar/index'
 import { hexToCMYK, hexToHSL, hexToRGB } from '../../services/changeColorMode'
 
-function Color ({ color }) {
+function Color ({ color, index }) {
   const theme = isDarkness(color) ? 'isLigth' : 'isDark'
   const ColorStatus = ''
   
@@ -19,7 +19,7 @@ function Color ({ color }) {
   return (
     <div className={'color ' + theme} style={colorStyle}>
       <span className='span'>{ColorStatus}</span>
-      <ColorActionsBar color={color} theme={theme} />
+      <ColorActionsBar color={color} theme={theme} index={index}/>
       <div className='tagContainer'>
         <h2 className='tag'>#{color}</h2>
         <p>RGB: {`${RGB.r}, ${RGB.g}, ${RGB.g}`}</p>

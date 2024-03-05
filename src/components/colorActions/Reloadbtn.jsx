@@ -1,25 +1,36 @@
-import React, { useState } from 'react'
+import { useState, useContext } from 'react'
 import Icon from '../icons/index'
+import paletteContext from '../../context/paletteContext'
+import { generateHex } from '../../services/GenerateRandomHexColor'
+import { useSetPaletteRoute } from '../../hooks/useSetPaletteRoute'
 
-function ReloadButton({ theme }) {
-  const [locked, setLocked] = useState(false)
+function ReloadButton({ theme, index }) {
+  const [reload, setReload] = useState(false)
+  const { palette } = useContext(paletteContext)
+  const { setNewPalette } = useSetPaletteRoute()
 
-  const handleLock = () => {
+  const handleReload = () => {
     try {
-      setLocked(true)
-      setTimeout(() => setLocked(false), 1000)
+      let newPalette = [...palette];
+      newPalette[index] = generateHex()
+      console.log(newPalette)
+
+      setNewPalette(newPalette);
+
+      setReload(true)
+      setTimeout(() => setReload(false), 1000)
     } catch (err) {
-      console.error('Failed to copy text: ', err)
+      console.error('Failed to reload color: ', err)
     }
   }
 
   return (
     <button
       className={'actionButton reloadButton ' + theme}
-      onClick={handleLock}
+      onClick={handleReload}
     >
       {
-        locked
+        reload
           ? <Icon name='done' classes='actionIcon reloadIcon' />
           : <Icon name='reload' classes='actionIcon reloadIcon' />
       }
